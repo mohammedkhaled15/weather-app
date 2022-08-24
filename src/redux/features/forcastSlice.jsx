@@ -34,7 +34,7 @@ const forecastSlice = createSlice({
         builder.addCase(getForecast.rejected, (state, action) => {
             state.loading = false;
             state.forecast = [];
-            state.error = action.error.message;
+            state.error = "There is No Data For This City";
         });
     },
 });
