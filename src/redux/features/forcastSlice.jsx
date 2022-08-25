@@ -8,17 +8,16 @@ const initialState = {
 };
 const ApiKey = 'f3df22d37e0ab270347f62a9b3d4cc89';
 const basUrl = 'https://api.openweathermap.org/data/2.5/weather?';
-const basUrl5 = 'https://api.openweathermap.org/data/2.5/forecast?';
+const basUrl5Daays = 'https://api.openweathermap.org/data/2.5/forecast?';
 
 
 export const getForecast = createAsyncThunk('getForecast', async (location) => {
     const latlon = await axios.get(`${basUrl}q=${location}&appid=${ApiKey}`);
     const response = await axios.get(
-        `${basUrl5}units=metric&lat=${latlon.data.coord.lat}&lon=${latlon.data.coord.lon}&appid=${ApiKey}`
+        `${basUrl5Daays}units=metric&lat=${latlon.data.coord.lat}&lon=${latlon.data.coord.lon}&appid=${ApiKey}`
     );
     return response.data;
 });
-
 const forecastSlice = createSlice({
     name: 'forecast',
     initialState,
