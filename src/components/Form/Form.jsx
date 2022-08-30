@@ -1,36 +1,51 @@
 import React, { useState } from 'react';
 
 import styles from './Form.module.css';
-import { useSelector, useDispatch } from "react-redux"
-// import { getLatLong } from '../../redux/features/getLatLongSlice';
+import { useDispatch } from "react-redux"
 import { getForecast } from '../../redux/features/forcastSlice';
+import { AsyncPaginate } from 'react-select-async-paginate';
 
-const Form = () => {
+import { geoCitiesOptions } from './citiesApiCall';
+import { API_URL } from './citiesApiCall';
+import "./select.css"
+
+const Form = ({ onSearchChange }) => {
 
     const dispatch = useDispatch()
-    const cityForecast = useSelector(state => state.forecast)
-    // const cityLatLong = useSelector(state => state.city)
     const [location, setLocation] = useState("")
-    // const [latlon, setLatLon] = useState({})
 
-    // useEffect(() => {
-    //     console.log("latlon changed")
-    // }, [latlon, dispatch, cityLatLong.cityLatLong])
 
 
     const handleOnSubmit = (e) => {
         e.preventDefault()
         if (!location || location === "") return
-        // console.log(location)
-        // dispatch(getLatLong(location)) // get the lat and lon data from geo API
-        dispatch(getForecast(location)) // use lat and lon date to get the weather date from API
-        // setLatLon(cityLatLong.cityLatLong)
-        // console.log(cityLatLong.cityLatLong)
+        dispatch(getForecast(location.label)) // use lat and lon date to get the weather date from API
     }
-    // console.log(latlon)
+
+    const handleOnChange = (searchData) => {
+        setLocation(searchData)
+        onSearchChange(searchData)
+    }
+
+    const loadOptions = (inputValue) => {
+        return fetch(`${API_URL}/cities?minPopulation=10000&namePrefix=${inputValue}`, geoCitiesOptions)
+            .then(response => response.json())
+            .then(response => {
+                return {
+                    options: response.data.map((city) => {
+                        return {
+                            value: `${city.latitude}`,
+                            label: `${city.name}`
+                        }
+                    })
+                }
+            })
+            .catch(err => console.error(err));
+    }
+
     return (
-        <form onSubmit={handleOnSubmit}>
-            <input
+        <form onSubmit={handleOnSubmit} className={styles.form}>
+            {/* <input
                 aria-label="location"
                 type="text"
                 className={`${styles.input} form-control`}
@@ -38,6 +53,13 @@ const Form = () => {
                 required
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
+            /> */}
+            <AsyncPaginate
+                placeholder="Search For City"
+                debounceTimeout={700}
+                value={location}
+                onChange={handleOnChange}
+                loadOptions={loadOptions}
             />
 
             <button type="submit" className={styles.button} onClick={handleOnSubmit}>

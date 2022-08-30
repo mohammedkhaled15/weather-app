@@ -10,11 +10,14 @@ import { useSelector } from 'react-redux';
 
 const Page = () => {
     const forecast = useSelector(state => state.forecast)
+    const handleSearchChange = (searchData) => {
+        console.log(searchData)
+    }
     return (
         <Fragment>
             <Header />
             <div className={styles.box}>
-                {forecast.forecast.cod !== "200" && !forecast.loading && < Form />}
+                {forecast.forecast.cod !== "200" && !forecast.loading && < Form onSearchChange={handleSearchChange} />}
                 {forecast.loading && <Loader />}
                 {forecast.forecast.cod === "200" && <Forecast />}
                 {forecast.forecast.cod !== "200" && forecast.error && <Error message={forecast.error} />}
