@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/PS22-weather-app-react-reduxtk/static/css/main.03e55932.chunk.css",
+    "main.css": "/PS22-weather-app-react-reduxtk/static/css/main.13f2bad8.chunk.css",
     "main.js": "/PS22-weather-app-react-reduxtk/static/js/main.fa3b9fa9.chunk.js",
     "main.js.map": "/PS22-weather-app-react-reduxtk/static/js/main.fa3b9fa9.chunk.js.map",
     "runtime-main.js": "/PS22-weather-app-react-reduxtk/static/js/runtime-main.db54af3b.js",
@@ -10,7 +10,7 @@
     "static/js/2.bfc9f8d3.chunk.js.map": "/PS22-weather-app-react-reduxtk/static/js/2.bfc9f8d3.chunk.js.map",
     "index.html": "/PS22-weather-app-react-reduxtk/index.html",
     "static/css/2.c4e73993.chunk.css.map": "/PS22-weather-app-react-reduxtk/static/css/2.c4e73993.chunk.css.map",
-    "static/css/main.03e55932.chunk.css.map": "/PS22-weather-app-react-reduxtk/static/css/main.03e55932.chunk.css.map",
+    "static/css/main.13f2bad8.chunk.css.map": "/PS22-weather-app-react-reduxtk/static/css/main.13f2bad8.chunk.css.map",
     "static/js/2.bfc9f8d3.chunk.js.LICENSE.txt": "/PS22-weather-app-react-reduxtk/static/js/2.bfc9f8d3.chunk.js.LICENSE.txt",
     "static/media/CurrentDay.module.css": "/PS22-weather-app-react-reduxtk/static/media/mountain.ef3e6e15.jpg"
   },
@@ -18,7 +18,7 @@
     "static/js/runtime-main.db54af3b.js",
     "static/css/2.c4e73993.chunk.css",
     "static/js/2.bfc9f8d3.chunk.js",
-    "static/css/main.03e55932.chunk.css",
+    "static/css/main.13f2bad8.chunk.css",
     "static/js/main.fa3b9fa9.chunk.js"
   ]
 }
